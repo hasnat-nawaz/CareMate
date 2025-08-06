@@ -45,7 +45,7 @@ const NutritionComponent = () => {
                 <p>Discover the nutritional details of your meals and ingredients.</p>
             </div>
             <form className='nutrition-form' onSubmit={handleSubmit}>
-                <input type='text' placeholder='Enter Food' required name='food-input' />
+                <input type='text' placeholder='eg: eggs and bacon and burger' required name='food-input' />
                 <button type='submit'>Get Nutrients Details</button>
             </form>
             <div id='nutritional-details'>
