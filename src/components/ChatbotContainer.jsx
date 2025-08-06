@@ -53,7 +53,7 @@ Here is the user’s message: "${message}"`;
                 const text = res.data.candidates?.[0]?.content?.parts?.[0]?.text;
 
                 if (!text) {
-                    setResponse("Something went wrong.");
+                    setResponse("Something went wrong. Please try again.");
                     return;
                 }
 
@@ -69,7 +69,7 @@ Here is the user’s message: "${message}"`;
 
             } catch (err) {
                 console.error("Fetch error:", err);
-                setResponse("Error occurred.");
+                setResponse("Error occurred. Please try again.");
             } finally {
                 setLoading(false);
             }
