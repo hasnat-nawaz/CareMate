@@ -1,0 +1,636 @@
+* {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ece9e9;
+}
+
+header {
+    max-width: 56rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    margin: 0.3rem auto;
+    background-color: #1F1F1F;
+    border-radius: 3rem;
+    font-weight: 600;
+    position: fixed;
+    top: 0.125rem;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    margin: 0 auto;
+}
+
+header a{
+    text-decoration: none;
+    color: black;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    border-radius: 1.875rem;
+    padding: 0 0.1875rem;
+    background-color: white;
+}
+
+.logo-container {
+    background-color: white;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container img {
+    background-color: white;
+    border-radius: 0.625rem;
+    height: 80%;
+}
+
+.header-left span {
+    background-color: white;
+    border-radius: 1.25rem;
+    padding: 0 0.4rem;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.nav-bar a {
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: white;
+    list-style-type: none;
+}
+
+.nav-bar li {
+    padding: 0 0.25rem;
+    height: 2.5rem;
+    width: 5rem;
+    border-radius: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.active {
+    border-radius: 1.875rem;
+    background-color: #0019fb;
+}
+
+.hamburger-icon {
+    display: none;
+    height: 2rem;
+    background-color: #1F1F1F;
+    padding: 0 1rem;
+}
+
+.dropdown-menu {
+    list-style-type: none;
+    color: white;
+    background-color: #1F1F1F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem;
+    gap: 1rem;
+    border-radius: 1.875rem;
+    width: 40vw;
+    position: absolute;
+    z-index: 10;
+    top: 4rem;
+    right: 1rem;
+}
+
+.dropdown-menu li {
+    color: white;
+    padding: 0.7rem;
+}
+
+.dropdown-menu a {
+    width: 100%;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Chatbot Page */
+
+.chatbot-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatbot-container {
+    height: 98%;
+    width: 90%;
+    background-color: #ece9e9;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+}
+
+.chat-section {
+    margin: 4rem 0 9.4rem 0;
+    height: 100%;
+    width: 90%;
+    max-width: 900px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    background-color: rgb(252, 249, 249);
+    border-radius: 2rem;
+}
+
+.chat-section::-webkit-scrollbar {
+    display: none;
+}
+
+.text-container {
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.response-text {
+    background-color: #eaebece3;
+    width: 70%;
+    padding: 0.8rem;
+    border-radius: 0px 25px 25px 25px;
+    line-height: 2rem;
+    word-spacing: 0.2rem;
+    color: rgb(77, 77, 77);
+}
+
+.user-text {
+    background-color: rgb(216, 216, 216);
+    color: rgb(77, 77, 77);
+    width: 70%;
+    padding: 0.8rem;
+    border-radius: 25px 25px 0px 25px;
+    margin-left: auto;
+}
+
+.initial-text {
+    color: rgb(77, 77, 77);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.control-section {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #1F1F1F;
+    border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.control-section button {
+    border: none;
+    background-color: #1F1F1F;
+}
+
+#expanding-input {
+    width: 100%;
+    min-height: 3rem;
+    resize: none;
+    padding: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: height 0.2s ease;
+    background-color: #1F1F1F;
+    border: none;
+    color: #e4e4e4;
+    overflow-y: auto;          
+    word-wrap: break-word;    
+    white-space: pre-wrap;   
+}
+
+#expanding-input::-webkit-scrollbar {
+    display: none;          
+}
+
+#expanding-input:focus {
+    outline: none;
+}
+
+.send-button {
+    height: 2.7rem;
+    width: 2.7rem;
+    background-color: #0019fb;
+    border-radius: 1rem;
+    padding: 0.4rem;
+}
+
+/* BMI Page */
+
+.bmi-page {
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.bmi-header {
+    background-color: rgb(252, 249, 249);
+    width: 100%;
+    min-width: 300px;
+    max-width: 900px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 2rem;
+}
+
+.bmi-header p {
+    padding-bottom: 2.5rem;
+}
+
+.bmi-page h1 {
+    padding: 2rem 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bmi-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #1F1F1F;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 2rem 4rem;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.input-container label {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    color: rgb(235, 234, 234);
+    font-weight: 600;
+    width: 100%;
+}
+
+.input-container input {
+    outline: none;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: none;
+    margin-top: 0.4rem;
+    background-color: #f3f3f3;
+}
+
+.bmi-form button {
+    height: 3.5rem;
+    width: 90%;
+    margin: 1rem 0 2rem 0;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background-color: #0019fb;
+    border: none;
+    color: white;
+}
+
+#bmi-details {
+    margin: 3rem 2rem;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    background-color: rgb(252, 249, 249);
+}
+
+.result-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 3rem;
+    color: #414141;
+}
+
+.result-container div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+/* Home Page */
+
+.home-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    margin: 0 2rem;
+}
+
+.homepage-container {
+    background-color: rgb(252, 249, 249);
+    width: 100%;
+    min-width: 300px;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 8rem;
+    padding: 2rem;
+    gap: 2rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 2rem;
+}
+
+.homepage-container h1 {
+    text-align: center;
+    padding: 2rem;
+}
+
+.homepage-container p {
+    text-align: justify;
+    max-width: 500px;
+    padding: 1rem;
+    line-height: 1.5rem;
+}
+
+.card-section {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+.card {
+    background-color: #1F1F1F;
+    width: 140px;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.footer{
+    background-color: #1F1F1F;
+    width: 100vw;
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+/* Nutrition Page */
+
+.nutrition-page {
+    margin: 7rem 2rem 7rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nutrition-header {
+    background-color: rgb(252, 249, 249);
+    width: 100%;
+    min-width: 300px;
+    max-width: 900px;
+    text-align: center;
+    padding: 2rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 2rem;
+}
+
+.nutrition-header p {
+    padding: 2rem;
+}
+
+.nutrition-form {
+    width: 100%;
+    max-width: 350px;
+    background-color: #1F1F1F;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 3rem 0;
+    border-radius: 2rem;
+}
+
+.nutrition-form input {
+    height: 3rem;
+    padding: 1rem;
+    outline: none;
+    border-radius: 1rem;
+    border: none;
+    background-color: #faf8f8;
+}
+
+.nutrition-form button {
+    height: 3rem;
+    width: 100%;
+    border-radius: 1rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    background-color: #0019fb;
+    color: #faf8f8;
+    border: none;
+}
+
+#nutritional-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+#nutritional-details h1 {
+    background-color: rgb(252, 249, 249);
+    width: 100%;
+    min-width: 300px;
+    max-width: 900px;
+    text-align: center;
+    padding: 3rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 2rem;
+}
+
+.cards-container {
+    max-width: 1300px;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.nutrition-card {
+    border-radius: 2rem;
+    padding: 1.5rem;
+    width: 250px;
+    background-color: rgb(252, 249, 249);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.values-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.numerical-values {
+    display: flex;
+    flex-direction: column;
+    align-items: self-end;
+}
+
+.nutrition-card h2 {
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.nutrition-card p {
+    padding: 0.2rem;
+    color: #474747;
+}
+
+/* Not Found Page */
+
+.not-found-page{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #5e5e5e;
+}
+
+/* Animations */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate {
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.loading-text::after {
+    content: '';
+    display: inline-block;
+    width: 1ch;
+    animation: dots 1s steps(3, end) infinite;
+}
+
+@keyframes dots {
+    0% {
+        content: '';
+    }
+
+    33% {
+        content: '.';
+    }
+
+    66% {
+        content: '..';
+    }
+
+    100% {
+        content: '...';
+    }
+}
+
+/* Media Query */
+
+@media (max-width: 800px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 950px) {
+    header {
+        margin: 0 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-bar {
+        display: none;
+    }
+
+    .hamburger-icon {
+        display: block;
+    }
+
+    .input-container {
+        flex-wrap: wrap;
+    }
+
+    .bmi-form button {
+        width: 85%;
+    }
+
+    .card-section {
+        flex-direction: column;
+        align-items: center;
+    }
+}
