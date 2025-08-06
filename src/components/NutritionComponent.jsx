@@ -7,7 +7,6 @@ const NutritionComponent = () => {
     const [data, setData] = useState(null)
     const [animate, setAnimate] = useState(0)
     const [loading, setLoading] = useState(false)
-    const apiKey = import.meta.env.VITE_NINJAS_API_KEY;
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -22,24 +21,20 @@ const NutritionComponent = () => {
             }
         }, 100);
         const food = event.target.elements['food-input'].value
-        axios.get(`https://api.api-ninjas.com/v1/nutrition?query=${food}`, {
-            headers: {
-                'X-Api-Key': apiKey
-            }
-        })
+        axios.get(`/api/nutrition?query=${food}`)
             .then(response => {
                 if (response.data.length === 0) {
-                    setData([])
+                    setData([]);
                 } else {
-                    setData(response.data)
+                    setData(response.data);
                 }
-                setLoading(false)
+                setLoading(false);
             })
             .catch(error => {
                 console.error('Error:', error);
-                setData("Error fetching data")
-                setLoading(false)
-            })
+                setData("Error fetching data");
+                setLoading(false);
+            });
         event.target.elements['food-input'].value = ''
     }
 

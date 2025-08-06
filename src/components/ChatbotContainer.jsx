@@ -8,7 +8,6 @@ const ChatbotContainer = () => {
     const [response, setResponse] = useState(null);
     const [animationKey, setAnimationKey] = useState(0);
     const [loading, setLoading] = useState(false);
-    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
 
 
@@ -30,25 +29,9 @@ Here is the user’s message: "${message}"`;
 
         async function fetchAIResponse() {
             try {
-                const res = await axios.post(
-                    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-                    {
-                        contents: [
-                            {
-                                parts: [
-                                    {
-                                        text: customPrompt
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    }
-                );
+                const res = await axios.post("/api/gemini", {
+                    prompt: customPrompt
+                });
 
                 const text = res.data.candidates?.[0]?.content?.parts?.[0]?.text;
 
