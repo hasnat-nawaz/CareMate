@@ -21,6 +21,8 @@ const BMICalculator = () => {
 
     function handleSubmit(event) {
         event.preventDefault()
+        event.target.elements['weight'].blur()
+        event.target.elements['height'].blur()
         let weight = event.target.elements.weight.value;
         let height = event.target.elements.height.value;
         const bmi = calculateBMI(weight ,height)

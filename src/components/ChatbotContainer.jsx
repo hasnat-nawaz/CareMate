@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import axios from 'axios'
 import uploadIcon from '/src/assets/images/upload.png'
 
 const ChatbotContainer = () => {
@@ -13,6 +14,7 @@ const ChatbotContainer = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
+        event.target.elements['userPrompt'].blur();
         const message = event.target.elements.userPrompt.value;
         setPrompt(message);
         setResponse(null);
@@ -28,29 +30,27 @@ Here is the user’s message: "${message}"`;
 
         async function fetchAIResponse() {
             try {
-                const res = await fetch(
+                const res = await axios.post(
                     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${apiKey}`,
                     {
-                        method: "POST",
+                        contents: [
+                            {
+                                parts: [
+                                    {
+                                        text: customPrompt
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
                         headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            contents: [
-                                {
-                                    parts: [
-                                        {
-                                            text: customPrompt
-                                        }
-                                    ]
-                                }
-                            ]
-                        })
+                            'Content-Type': 'application/json'
+                        }
                     }
                 );
 
-                const data = await res.json();
-                const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                const text = res.data.candidates?.[0]?.content?.parts?.[0]?.text;
 
                 if (!text) {
                     setResponse("Something went wrong.");

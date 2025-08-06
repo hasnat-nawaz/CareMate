@@ -11,6 +11,7 @@ const NutritionComponent = () => {
 
     function handleSubmit(event) {
         event.preventDefault()
+        event.target.elements['food-input'].blur()
         setLoading(true)
         setAnimate(prev => prev + 1)
         setData(null)
