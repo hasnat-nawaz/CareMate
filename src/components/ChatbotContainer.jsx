@@ -31,7 +31,7 @@ Here is the user’s message: "${message}"`;
         async function fetchAIResponse() {
             try {
                 const res = await axios.post(
-                    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${apiKey}`,
+                    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
                     {
                         contents: [
                             {
