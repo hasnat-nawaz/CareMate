@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     try {
         const apiRes = await axios.get(`https://api.api-ninjas.com/v1/nutrition?query=${food}`, {
             headers: {
-                'X-Api-Key': process.env.YOUR_ENV_VAR_NAME
+                'X-Api-Key': process.env.NINJAS_API_KEY
             }
         });
 
