@@ -2,7 +2,6 @@ import React from 'react'
 
 const NutritionCard = (props) => {
     const data = props.data
-    console.log(data)
     return (
         <div className="nutrition-card">
             <h2>{data.name}</h2>

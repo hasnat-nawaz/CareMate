@@ -29,7 +29,6 @@ const BMICalculator = () => {
         event.target.elements.weight.value = ''
         event.target.elements.height.value = ''
         document.getElementById('bmi-details').scrollIntoView({ behavior: 'smooth' })
-        console.log(bmi, category)
     }
 
 
