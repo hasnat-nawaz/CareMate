@@ -1,26 +1,22 @@
-export default async function handler(req, res) {
-    const { query } = req.query; // food query from frontend
+import axios from 'axios'
 
-    if (!query) {
+export default async function handler(req, res) {
+    const food = req.query.query;
+
+    if (!food) {
         return res.status(400).json({ error: "Missing query parameter" });
     }
 
     try {
-        const apiRes = await fetch(`https://api.api-ninjas.com/v1/nutrition?query=${query}`, {
+        const apiRes = await axios.get(`https://api.api-ninjas.com/v1/nutrition?query=${food}`, {
             headers: {
-                'X-Api-Key': process.env.NINJA_API_KEY
+                'X-Api-Key': process.env.YOUR_ENV_VAR_NAME
             }
         });
 
-        if (!apiRes.ok) {
-            return res.status(apiRes.status).json({ error: "Failed to fetch data from API-Ninjas" });
-        }
-
-        const data = await apiRes.json();
-        res.status(200).json(data);
-
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: "Internal Server Error" });
+        res.status(200).json(apiRes.data);
+    } catch (error) {
+        console.error("API call failed:", error.message);
+        res.status(500).json({ error: "Internal server error" });
     }
 }
