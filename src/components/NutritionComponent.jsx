@@ -15,7 +15,12 @@ const NutritionComponent = () => {
         setLoading(true)
         setAnimate(prev => prev + 1)
         setData(null)
-        document.getElementById('nutritional-details').scrollIntoView({ behavior: 'smooth' })
+        setTimeout(() => {
+            const element = document.getElementById('nutritional-details');
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }, 100);
         const food = event.target.elements['food-input'].value
         axios.get(`https://api.api-ninjas.com/v1/nutrition?query=${food}`, {
             headers: {

@@ -7,9 +7,9 @@ const BMICalculator = () => {
 
 
     function calculateBMI(weightKg, heightCm) {
-        const heightM = heightCm / 100;       
-        const bmi = weightKg / (heightM * heightM);  
-        return bmi.toFixed(1);               
+        const heightM = heightCm / 100;
+        const bmi = weightKg / (heightM * heightM);
+        return bmi.toFixed(1);
     }
 
     function getBMICategory(bmi) {
@@ -25,12 +25,17 @@ const BMICalculator = () => {
         event.target.elements['height'].blur()
         let weight = event.target.elements.weight.value;
         let height = event.target.elements.height.value;
-        const bmi = calculateBMI(weight ,height)
+        const bmi = calculateBMI(weight, height)
         const category = getBMICategory(bmi)
         setBmi({ value: bmi, category: category })
         event.target.elements.weight.value = ''
         event.target.elements.height.value = ''
-        document.getElementById('bmi-details').scrollIntoView({ behavior: 'smooth' })
+        setTimeout(() => {
+            const element = document.getElementById('bmi-details');
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }, 100);
     }
 
 
