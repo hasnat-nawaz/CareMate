@@ -16,7 +16,19 @@ export default async function handler(req, res) {
 
         res.status(200).json(apiRes.data);
     } catch (error) {
-        console.error("API call failed:", error.message);
-        res.status(500).json({ error: "Internal server error" });
+        console.error("API call failed:", error);
+        if (error.response) {
+            console.error("API response error:", error.response.status, error.response.data);
+            return res.status(error.response.status).json({
+                error: "External API error",
+                details: error.response.data
+            });
+        } else if (error.request) {
+            console.error("No response received:", error.request);
+            return res.status(503).json({ error: "External API unavailable" });
+        } else {
+            console.error("Request setup error:", error.message);
+            return res.status(500).json({ error: "Internal server error", details: error.message });
+        }
     }
 }

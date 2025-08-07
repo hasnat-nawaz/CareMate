@@ -54,6 +54,9 @@ const NutritionComponent = () => {
                 {!loading && data && data.length === 0 && (
                     <p className="no-data-text">No data found. Please try another food item.</p>
                 )}
+                {!loading && data === "Error fetching data" && (
+                    <p className="error-text">Failed to fetch nutrition data. Please try again later.</p>
+                )}
                 {!loading && Array.isArray(data) && data.length > 0 &&
                     <div className="cards-container animate" key={animate}>
                         {
