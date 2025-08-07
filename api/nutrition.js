@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 export default async function handler(req, res) {
     const food = req.query.query;
@@ -8,7 +8,9 @@ export default async function handler(req, res) {
     }
 
     try {
-        const apiRes = await axios.get(`https://api.api-ninjas.com/v1/nutrition?query=${food}`, {
+        const encodedFood = encodeURIComponent(food);
+
+        const apiRes = await axios.get(`https://api.api-ninjas.com/v1/nutrition?query=${encodedFood}`, {
             headers: {
                 'X-Api-Key': process.env.NINJAS_API_KEY
             }
